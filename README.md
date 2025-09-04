@@ -3,6 +3,10 @@
 In [WinForms DataGrid](https://www.syncfusion.com/winforms-ui-controls/datagrid) (SfDataGrid), limiting selection to a maximum of two can be achieved by handling the [SelectionChanging](https://help.syncfusion.com/cr/windowsforms/Syncfusion.WinForms.DataGrid.SfDataGrid.html#Syncfusion_WinForms_DataGrid_SfDataGrid_SelectionChanging) event. Within this event, logic can be applied to evaluate the counts of [SelectedItems](https://help.syncfusion.com/cr/windowsforms/Syncfusion.WinForms.DataGrid.SfDataGrid.html#Syncfusion_WinForms_DataGrid_SfDataGrid_SelectedItems), **RemovedItems**, and **AddedItems**. If the total number of selected rows exceeds two, the selection process can be cancelled by setting  **e.cancel** to **true**.
 
 ```csharp
+//Event subscription
+sfDataGrid1.SelectionChanging += OnSelectionChanging;
+
+//Event customization
 private void OnSelectionChanging(object sender, SelectionChangingEventArgs e)
 {
      var dataGrid = (sender as SfDataGrid);
