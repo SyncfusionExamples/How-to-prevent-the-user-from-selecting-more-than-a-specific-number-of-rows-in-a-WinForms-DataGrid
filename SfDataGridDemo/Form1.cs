@@ -21,18 +21,24 @@ namespace SfDataGrid_Demo
         public Form1()
         {
             InitializeComponent();
+
             orderInfo = new OrderInfoCollection();
+
             sfDataGrid1.AutoGenerateColumns = false;
             sfDataGrid1.SelectionMode = GridSelectionMode.Multiple;
             sfDataGrid1.DataSource = orderInfo.Orders;
+
             sfDataGrid1.Columns.Add(new GridNumericColumn() { MappingName = "OrderID", HeaderText = "Order ID", AllowEditing = false });
             sfDataGrid1.Columns.Add(new GridTextColumn() { MappingName = "CustomerID", HeaderText = "Customer ID" , AllowEditing = true});
             sfDataGrid1.Columns.Add(new GridTextColumn() { MappingName = "CustomerName", HeaderText = "Name", AllowEditing = false });
             sfDataGrid1.Columns.Add(new GridTextColumn() { MappingName = "Country", HeaderText = "Country" , AllowEditing = true });
             sfDataGrid1.Columns.Add(new GridTextColumn() { MappingName = "ShipCity", HeaderText = "Ship City" , AllowEditing = false });
+
+            //Event subscription
             sfDataGrid1.SelectionChanging += OnSelectionChanging;
         }
 
+        //Event customization
         private void OnSelectionChanging(object sender, SelectionChangingEventArgs e)
         {
             var dataGrid = (sender as SfDataGrid);
